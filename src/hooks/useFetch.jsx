@@ -21,7 +21,9 @@ const useFetch = (url) => {
                 data:null,
                 error:null
             })
-            const response = await fetch(`${BASE_URL}${__url}`)
+            const response = await fetch(`${BASE_URL}${__url}`,{
+                credentials:'include'
+            })
             const data = await response.json()
             
             setData({

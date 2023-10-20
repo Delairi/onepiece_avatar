@@ -6,7 +6,9 @@ import { BASE_URL } from "../Urls";
 export const CharacterThunk = createAsyncThunk('/api/characters',async (payload,thunkAPI) => {
 
     try{
-        const response = await fetch(`${BASE_URL}/${payload.url}`)
+        const response = await fetch(`${BASE_URL}/${payload.url}`,{
+            credentials:'include'
+        })
         const data = await response.json()
         return data
 
