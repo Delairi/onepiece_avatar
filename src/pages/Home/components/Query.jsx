@@ -1,23 +1,21 @@
 import { useDispatch } from "react-redux"
-import { BASE_URL } from "../../../Urls"
 import { IconSearch } from "../../../components/Heroiconts"
 import {useForm} from 'react-hook-form'
 import { MoviesThunk } from "../../../reducers/ListReducer"
 
 const Query = () => {
 
-  const {handleSubmit,register} = useForm()
+  const {handleSubmit,register,reset} = useForm()
   const dispatch = useDispatch()
   const Submit = async ({query}) => {
-    
-    const response = await fetch(`${BASE_URL}/api/v1/movies/filter/${query}`)
-    const data = await response.json()
+    if(query === '') return
     dispatch(MoviesThunk({
       url:`/api/v1/movies/filter/${query}`
     }))
-    console.log(data)
-
+    reset()
   }
+
+
   return (
     <form 
     onSubmit={handleSubmit(Submit)}
@@ -25,8 +23,9 @@ const Query = () => {
       <input 
       {...register('query')}
       className='input-normal'
+      autoComplete="off"
       placeholder="Search Movie"
-      type='text' />      
+      type='text' />
       <button type='submit' >
         <IconSearch />
       </button>

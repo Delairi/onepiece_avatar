@@ -11,7 +11,6 @@ const MoviesService = () => {
 
         },
         filterMovies: async (query) => {
-            console.log(query)
             const filterMovies = await ModelMovies.find({
                 title: {
                     $regex: query,
@@ -21,8 +20,7 @@ const MoviesService = () => {
             if(!filterMovies) throw new Error('Error in filter')
             if(filterMovies.length === 0) throw new Error('No Movies')
             return filterMovies
-        },
-
+        }
     }
 
 }

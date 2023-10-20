@@ -5,9 +5,13 @@ import { BASE_URL } from "../Urls";
 export const MoviesThunk = createAsyncThunk('/api/movies', async (payload,thunkAPI) => {
 
     try{
-        const response = await fetch(`${BASE_URL}${payload.url}`);
+        const response = await fetch(`${BASE_URL}${payload.url}`,{
+            credentials:'include',
+        });
         const data = await response.json();
         console.log(data)
+
+        if(data.message === 'No Movies') return thunkAPI.rejectWithValue(data.message)
         return data
 
     }catch(err){
@@ -20,7 +24,7 @@ export const MoviesThunk = createAsyncThunk('/api/movies', async (payload,thunkA
 const initialState = {
     status:'idle',
     data:null,
-    error:null
+    error:null,
 }
 
 const listSlice = createSlice({

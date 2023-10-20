@@ -7,6 +7,7 @@ import App from './App'
 import Movie from './pages/Movie/Movie'
 import { Provider } from 'react-redux'
 import store from './app/store'
+import Characters from './pages/Characters/Characters'
 const routes = createBrowserRouter([
   {
    path:'/',
@@ -23,7 +24,12 @@ const routes = createBrowserRouter([
      {
        path:'movie/:idMovie/character/:idCharacter',
        element:<Character />
+     },
+     {
+        path:'characters',
+        element:<Characters />
      }
+
    ]
   },
   

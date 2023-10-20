@@ -1,14 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import BoxPreview from "../../../components/Boxex";
-import useFetch from "../../../hooks/useFetch";
-import { useEffect } from "react";
-import { setMovie } from "../../../reducers/ListReducer";
+import {Loader} from '../../../components/Loader'
+import Error from "../../../components/Error";
 
 const ListMovies = (props) => {
  
   const {status,data,error} = useSelector((state) => state.movies);
-  console.log(status,data,error)
-    if (status === "loading" || status === "idle" || data === null ) return <div>Loading...</div>;
+    if (status === "loading" || status === "idle" || data === null ) return <Loader />
+    if (status === "error") return <Error error={error} />
   return (
     <div className="w-full h-[calc(100vh-40px)] flex flex-col gap-2">
     {data !== null &&

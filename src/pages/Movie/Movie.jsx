@@ -7,6 +7,7 @@ import Details from "./components/Details";
 import Trailer from "./components/Trailer";
 import Information from "./components/Information";
 import Characters from "./components/Characters";
+import SetPreference from "../../utils/SetPreference";
 
 const Movie = () => {
   const { mal_id } = useParams();
@@ -16,6 +17,7 @@ const Movie = () => {
   useEffect(() => {
     if(!data) return
     setMovieState(FindMovie(data, mal_id))
+    SetPreference(FindMovie(data, mal_id))
   }, [data])
 
 

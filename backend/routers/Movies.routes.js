@@ -32,4 +32,30 @@ RouterMovies.get('/filter/:query', async (req,res) => {
 
 })
 
+RouterMovies.get('/last_view', async (req,res) => {
+
+    try{
+
+        const lastViewMovies = await MoviesController().lastViewMovies(req,res)
+        res.send(lastViewMovies)
+
+    }catch(err){
+        HandleError(err,res)
+    }
+
+})
+
+RouterMovies.post('/last_view', async (req,res) => {
+
+    try{
+
+        const postLastView = await MoviesController().postMovie(req,res)
+        res.send(postLastView)
+
+    }catch(err){
+        HandleError(err,res)
+    }
+
+})
+
 export default RouterMovies
