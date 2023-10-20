@@ -5,22 +5,22 @@ import { useSelector } from "react-redux";
 import FindMovie from "../../utils/FindMovie";
 import Details from "./components/Details";
 import Trailer from "./components/Trailer";
+import Information from "./components/Information";
+import Characters from "./components/Characters";
 
 const Movie = () => {
   const { mal_id } = useParams();
-  // const { data, status, error } = useFetch(`/${mal_id}/characters`);
   const {data,status,error} = useSelector((state) => state.movies);
   const [MovieState, setMovieState] = useState(null)
   
   useEffect(() => {
-    console.log(data);
     if(!data) return
     setMovieState(FindMovie(data, mal_id))
   }, [data])
-  
+
+
   if (status === "loading" || status === "idle" || MovieState === null) return <div>Loading...</div>;
-  if(status === 'error') return <div>{error}</div>;
-  console.log(MovieState);
+  if(status === 'error') return <div>{error.message}</div>;
   return (
     <div>
       {
@@ -50,13 +50,11 @@ const Movie = () => {
         </div>
       </div>
 
-      {MovieState.trailer.youtube_id && (
-        <div className="flex flex-col w-full justify-center items-center">
-          <h3 className="text-3xl underline">Trailer</h3>
-          <Trailer {...MovieState} />
-        </div>
-      )}
+      <Trailer {...MovieState} /> 
 
+      <Information {...MovieState} />
+
+      <Characters {...MovieState} />
       {/* {data.data.map((item) => {
         return <div key={item.character.mal_id}>{item.character.name}</div>;
       })} */}

@@ -15,4 +15,15 @@
         @apply font-bold;
     }
 
+    .table-normal{
+        @apply w-full border-separate  border-spacing-x-2 p-14;
+    }
+
+    .tr-normal{
+        @apply bg-[#f72727] text-white p-2;
+    }
+    .tr-normal > th,td{
+        @apply  shadow-md p-2 w-1/2;
+    }
+
 }

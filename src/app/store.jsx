@@ -6,7 +6,7 @@ import { GetMovies } from '../middleware/GetMovies'
 const store = configureStore({
   reducer: {
     movies:ListReducer,
-    character:CharacterReducer
+    characters:CharacterReducer
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(GetMovies)
 })
