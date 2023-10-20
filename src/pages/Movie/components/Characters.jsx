@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { CharacterThunk } from "../../../reducers/CharactersReducer";
 
 const VoiceActor = (props) => {
-  console.log(props.voice_actors[0]);
   return (
     <div>
     <div className='flex justify-center'>
@@ -66,7 +65,7 @@ const Characters = () => {
   const GetCharacters = async () => {
     dispatch(
       CharacterThunk({
-        url: `anime/${mal_id}/characters`,
+        url: `api/v1/characters/movie/${mal_id}`,
       })
     );
   };

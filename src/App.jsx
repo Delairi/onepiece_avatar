@@ -12,7 +12,7 @@ const App = () => {
         dispatch({
           type:'api/movies',
           payload:{
-            url:'/anime?q=one%20piece&type=Movie'
+            url:'/api/v1/movies'
           }
         })
     }, [])

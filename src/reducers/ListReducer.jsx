@@ -1,11 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { BASE_URL } from "../Urls";
 
 
 export const MoviesThunk = createAsyncThunk('/api/movies', async (payload,thunkAPI) => {
 
     try{
-        const response = await fetch(`https://api.jikan.moe/v4${payload.url}`);
+        const response = await fetch(`${BASE_URL}${payload.url}`);
         const data = await response.json();
+        console.log(data)
         return data
 
     }catch(err){
@@ -38,7 +40,7 @@ const listSlice = createSlice({
 
             builder.addCase(MoviesThunk.fulfilled, (state,action) => {
                 state.status = 'success'
-                state.data = action.payload.data
+                state.data = action.payload
             })
 
             builder.addCase(MoviesThunk.rejected, (state,action) => {

@@ -74,13 +74,12 @@ const Appear = ({ data, keyWord }) => {
 
 const Character = () => {
   const { idCharacter } = useParams();
-  const { data, status, error } = useFetch(`/characters/${idCharacter}/full`);
+  const { data, status, error } = useFetch(`/api/v1/characters/${idCharacter}`);
 
   if (status === "loading" || data === null || data === undefined)
     return <div>Loading...</div>;
   if (status === "error") return <div>{error}</div>;
-  console.log(data);
-
+  
   return (
     <div className="w-full">
       <div className="w-full flex flex-row justify-start">
