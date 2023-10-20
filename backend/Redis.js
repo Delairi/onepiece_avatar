@@ -23,6 +23,10 @@ export const schemaLastViewRedis = async () => {
             type: SchemaFieldTypes.NUMERIC,
             AS: 'value'
         },
+        '$.favorites':{
+            type: SchemaFieldTypes.TAG,
+            AS: 'favorites'
+        },
         '$.lastView': {
             type: SchemaFieldTypes.TAG,
             AS: 'lastView'

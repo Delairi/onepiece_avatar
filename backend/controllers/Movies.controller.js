@@ -15,6 +15,7 @@ const MoviesController = () => {
                     value: random,
                     expires,
                     lastView: [],
+                    favorites: []
                 }
                 await PreferencesService().saveCookie(data)
                 res.cookie('cookieAvatar', random, {
@@ -67,6 +68,29 @@ const MoviesController = () => {
             }
             const postMovie = await PreferencesService().updateCookie(getCookie.value, data)
             return postMovie
+
+        },
+        postFavorite: async (req, res) => {
+
+            const cookie = req.cookies['cookieAvatar']
+            if (!cookie) throw new Error('No cookie')
+            const getCookie = await PreferencesService().searchCookie(cookie)
+            const exist = getCookie.favorites.find(last => last.mal_id === req.body.mal_id);
+            
+            if(exist) return getCookie
+            const data = {
+                ...getCookie,
+                favorites: [
+                    {
+                        mal_id: req.body.mal_id,
+                        title: req.body.title,
+                        image: req.body.images.webp.image_url
+                    },
+                    ...getCookie.favorites,
+                ]
+            }
+            const postFavorite = await PreferencesService().updateCookie(getCookie.value, data)
+            return postFavorite
 
         }
 

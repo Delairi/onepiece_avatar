@@ -8,6 +8,7 @@ import Movie from './pages/Movie/Movie'
 import { Provider } from 'react-redux'
 import store from './app/store'
 import Characters from './pages/Characters/Characters'
+import Favorites from './pages/Favorites/Favorites'
 const routes = createBrowserRouter([
   {
    path:'/',
@@ -28,6 +29,10 @@ const routes = createBrowserRouter([
      {
         path:'characters',
         element:<Characters />
+     },
+     {
+        path:'favorites',
+        element:<Favorites />
      }
 
    ]

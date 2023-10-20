@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import FindMovie from "../../utils/FindMovie";
 import Details from "./components/Details";
 import Trailer from "./components/Trailer";
 import Information from "./components/Information";
 import Characters from "./components/Characters";
 import SetPreference from "../../utils/SetPreference";
+import { IconHeart } from "../../components/Heroiconts";
+import AddFavorite from "../../utils/AddFavorite";
 
 const Movie = () => {
   const { mal_id } = useParams();
   const {data,status,error} = useSelector((state) => state.movies);
   const [MovieState, setMovieState] = useState(null)
-  
+  const dispatch = useDispatch()
   useEffect(() => {
     if(!data) return
     setMovieState(FindMovie(data, mal_id))
@@ -25,11 +27,28 @@ const Movie = () => {
   if(status === 'error') return <div>{error.message}</div>;
   return (
     <div>
-      {
-        <h1 className="w-full text-center text-2xl font-bold">
+      
+        <div className='flex flex-row gap-2 items-center justify-center'>
+        <h1 className="text-center text-2xl font-bold">
           {MovieState.title}
         </h1>
-      }
+        <button 
+        onClick={()=>{
+
+          AddFavorite(MovieState)
+          dispatch({
+            type:'api/preference',
+            payload:{
+              url:'/api/v1/movies/last_view'
+            }
+          })
+          alert('Agregado a favoritos')
+        }}        
+        className='text-[black]'>
+          <IconHeart />
+        </button>
+          </div>
+      
       <div className="flex flex-row gap-2 p-2">
         
         <img src={MovieState.images.webp.image_url} />
@@ -57,9 +76,7 @@ const Movie = () => {
       <Information {...MovieState} />
 
       <Characters {...MovieState} />
-      {/* {data.data.map((item) => {
-        return <div key={item.character.mal_id}>{item.character.name}</div>;
-      })} */}
+      
     </div>
   );
 };

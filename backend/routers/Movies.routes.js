@@ -58,4 +58,17 @@ RouterMovies.post('/last_view', async (req,res) => {
 
 })
 
+RouterMovies.post('/favorite', async (req,res) => {
+
+    try{
+
+        const postLastView = await MoviesController().postFavorite(req,res)
+        res.send(postLastView)
+
+    }catch(err){
+        HandleError(err,res)
+    }
+
+})
+
 export default RouterMovies
