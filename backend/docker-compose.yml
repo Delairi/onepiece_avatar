@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  avatar-db:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: avatar-db
+    restart: always
+    ports:
+      - 8008:8008
+    environment:
+      - NODE_ENV=
+      - BASE_URL=
+      - PORT=
+      - SAME_SITE=
+      - MONGO_URI=
+      - REDIS_URL=
+      - REDIS_PASSWORD=
+

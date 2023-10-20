@@ -33,6 +33,10 @@ const routes = createBrowserRouter([
      {
         path:'favorites',
         element:<Favorites />
+     },
+     {
+        path:'*',
+        element:<Home />
      }
 
    ]

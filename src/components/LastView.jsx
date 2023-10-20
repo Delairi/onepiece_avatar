@@ -2,7 +2,6 @@ import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 
 const View = (props) => {
-    console.log(props)
     return (
         <Link to={`/movie/${props.mal_id}`} className='flex flex-col gap-2'>
                 <img src={props.image} alt={props.title} />
@@ -16,7 +15,6 @@ const LastView = () => {
 
     const {data,status,error} = useSelector(state => state.preference)
 
-    console.log(data,status)
     if(status === 'loading') return <h1>Loading...</h1>
     if(status === 'error' || data === null || data.lastView.length===0) return 
 

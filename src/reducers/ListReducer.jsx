@@ -9,13 +9,10 @@ export const MoviesThunk = createAsyncThunk('/api/movies', async (payload,thunkA
             credentials:'include',
         });
         const data = await response.json();
-        console.log(data)
-
         if(data.message === 'No Movies') return thunkAPI.rejectWithValue(data.message)
         return data
 
     }catch(err){
-        console.log(err)
         return thunkAPI.rejectWithValue(err)
     }
 

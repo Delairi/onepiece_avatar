@@ -2,7 +2,6 @@ import { SchemaFieldTypes, createClient } from "redis";
 
 
 export const client = createClient({
-    username: process.env.REDIS_USERNAME,
     password: process.env.REDIS_PASSWORD,
     socket: {
         host: process.env.REDIS_URL,

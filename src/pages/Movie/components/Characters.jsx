@@ -69,7 +69,6 @@ const Characters = () => {
       })
     );
   };
-  console.log(data, status, error);
   if (
     status === "loading" ||
     status === "idle" ||
@@ -78,7 +77,6 @@ const Characters = () => {
   )
     return <div>Loading...</div>;
   if (status === "error") return <div>{error.message}</div>;
-  console.log(data, status);
   return (
     <div className="flex flex-row flex-wrap items-center justify-start">
       {data.map((item) => {

@@ -11,7 +11,6 @@ export const CharacterThunk = createAsyncThunk('/api/characters',async (payload,
         return data
 
     }catch(err){
-        console.log(err);
         return thunkAPI.rejectWithValue(err)
     }
 

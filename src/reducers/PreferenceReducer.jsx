@@ -4,15 +4,12 @@ import { BASE_URL } from "../Urls";
 export const PreferenceThunk = createAsyncThunk('/api/preference', async (payload,thunkAPI) => {
 
     try{
-        console.log(payload)
         const pref = await fetch(`${BASE_URL}${payload.url}`,{
             credentials:'include',
         });
         const prefData = await pref.json();
-        console.log(prefData)
         return prefData
     }catch(err){
-        console.log(err)
         return thunkAPI.rejectWithValue(err)
     }
 

@@ -5,7 +5,6 @@ import { useEffect } from "react"
 
 
 const App = () => {
-
     const dispatch = useDispatch()
   const characters = useSelector(state => state.characters)
     useEffect(() => {

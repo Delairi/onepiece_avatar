@@ -7,7 +7,6 @@ export const GetMovies = (store) => (next) => async (action) => {
         store.dispatch(MoviesThunk(action.payload))
     }
     if(action.type === 'api/preference'){
-        console.log(action.payload)
         store.dispatch(PreferenceThunk(action.payload))
     }
     return next(action)

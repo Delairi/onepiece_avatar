@@ -17,15 +17,17 @@ const Voices = ({voices}) => {
   return (
     <table className="table-normal">
       <thead>
+        <tr>
         <th>&nbsp;</th>
         <th>Name</th>
         <th>Language</th>
+        </tr>
       </thead>
 
       <tbody>
         {
-          voices !== null && voices.map((item)=>{
-            return <VoiceActor key={item.mal_id} {...item} />
+          voices !== null && voices.map((item,index)=>{
+            return <VoiceActor key={item.mal_id+'actor'+index} {...item} />
           })
         }
       </tbody>
@@ -57,11 +59,11 @@ const Appear = ({ data, keyWord }) => {
         <h3 className="uppercase">{keyWord}</h3>
       </div>
       <div className="flex flex-col gap-2">
-        {sliceData.map((item) => {
+        {sliceData.map((item,index) => {
           return (
             <EachAppear
               keyWord={keyWord}
-              key={item.mal_id}
+              key={item.mal_id+'appear'+index}
               role={item.role}
               {...item}
             />
