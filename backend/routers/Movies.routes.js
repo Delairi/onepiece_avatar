@@ -19,4 +19,17 @@ RouterMovies.get('/', async (req,res) => {
 
 })
 
+RouterMovies.get('/filter/:query', async (req,res) => {
+
+    try{
+
+        const filterMovies = await MoviesController().filterMovies(req,res)
+        res.send(filterMovies)
+
+    }catch(err){
+        HandleError(err,res)
+    }
+
+})
+
 export default RouterMovies

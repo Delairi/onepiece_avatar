@@ -8,7 +8,14 @@ const MoviesController = () => {
             const getMovies = await MoviesService().getMovies()
             return getMovies
 
-        }
+        },
+        filterMovies: async (req, res) => {
+
+            const query  = req.params.query
+            const filterMovies = await MoviesService().filterMovies(query)
+            return filterMovies
+
+        },
 
     }
 

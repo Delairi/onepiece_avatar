@@ -26,4 +26,11 @@
         @apply  shadow-md p-2 w-1/2;
     }
 
+    .form-normal{
+        @apply flex flex-row items-center justify-center gap-2;
+    }
+    .input-normal {
+        @apply shadow-md p-2 rounded-lg;
+    }
+
 }

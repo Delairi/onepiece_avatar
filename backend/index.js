@@ -16,7 +16,14 @@ const main = async () => {
 
     app.use(express.json())
     app.use(express.urlencoded({extended: true}))
+
+    /**
+     * Init Mongo
+     */
     InitMongo()
+
+
+
     /**
      * Routes
      */

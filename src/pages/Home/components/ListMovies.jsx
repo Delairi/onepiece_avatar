@@ -10,7 +10,7 @@ const ListMovies = (props) => {
   console.log(status,data,error)
     if (status === "loading" || status === "idle" || data === null ) return <div>Loading...</div>;
   return (
-    <div className="w-full h-[calc(100vh-40px)] overflow-auto flex flex-col gap-2">
+    <div className="w-full h-[calc(100vh-40px)] flex flex-col gap-2">
     {data !== null &&
       data.map((item) => {
         return <BoxPreview
