@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Home from './pages/Home/Home.jsx'
-import Characters from './pages/Characters/Characters'
+import Character from './pages/Character/Character'
 import App from './App'
 import Movie from './pages/Movie/Movie'
 import { Provider } from 'react-redux'
@@ -17,12 +17,12 @@ const routes = createBrowserRouter([
       element:<Home /> 
     },
      {
-       path:'characters',
-       element:<Characters />
-     },
-     {
        path:'movie/:mal_id',
        element:<Movie />
+     },
+     {
+       path:'movie/:idMovie/character/:idCharacter',
+       element:<Character />
      }
    ]
   },
